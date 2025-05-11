@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventimo Party Room - Najam Opreme</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Eventimo</div>
+        <div class="nav-links">
+            <a href="index.html">Početna</a>
+            <a href="index.html#services">Usluge</a>
+            <a href="oprema.html">Oprema</a>
+            <a href="index.html#contact">Kontakt</a>
+        </div>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="equipment-gallery">
+        <h1>Naša Oprema</h1>
+        <div class="equipment-grid" id="equipmentGrid">
+            <!-- Equipment items will be loaded here via JavaScript -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Eventimo Party Room</h3>
+                <p>Vaš partner za nezaboravne proslave</p>
+            </div>
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p><i class="fas fa-phone"></i> +385 XX XXX XXX</p>
+                <p><i class="fas fa-envelope"></i> info@eventimo.hr</p>
+            </div>
+            <div class="footer-section">
+                <h3>Pratite Nas</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Eventimo Party Room.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load equipment data from JSON
+        fetch('data/equipment.json')
+            .then(response => response.json())
+            .then(data => {
+                const equipmentGrid = document.getElementById('equipmentGrid');
+                data.equipment.forEach(item => {
+                    const equipmentItem = document.createElement('div');
+                    equipmentItem.className = 'equipment-gallery-item';
+                    equipmentItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}">
+                        <div class="equipment-info">
+                            <h3>${item.name}</h3>
+                        </div>
+                    `;
+                    equipmentGrid.appendChild(equipmentItem);
+                });
+            })
+            .catch(error => console.error('Error loading equipment data:', error));
+    </script>
+</body>
+</html> 
