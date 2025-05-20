@@ -799,6 +799,9 @@ html {
 }
 
 @media (max-width: 900px) {
+    .navbar {
+        padding: 1.1rem 5%;
+    }
     .equipment-gallery .equipment-grid, .equipment-grid {
         grid-template-columns: repeat(2, 1fr);
     }
